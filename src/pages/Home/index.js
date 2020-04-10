@@ -80,7 +80,7 @@ export default class Home extends Component {
 
                 <List 
                     data={users}
-                    keyExtractor={user => user.id}
+                    keyExtractor={user => String(user.id)}
                     renderItem={({ item }) => (
                         <User>
                             <Avatar source={{ uri: item.avatar }} />
@@ -88,7 +88,7 @@ export default class Home extends Component {
                             <Bio> {item.bio} </Bio>
 
                             <ProfileButton onPress={() => this.handleNavigate(item)}>
-                                <ProfileButtonText>Ver perfil</ProfileButtonText>
+                                <ProfileButtonText>Ver repositórios</ProfileButtonText>
                             </ProfileButton>
                         </User>
                     )}

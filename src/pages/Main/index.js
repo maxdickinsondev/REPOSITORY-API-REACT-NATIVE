@@ -5,7 +5,6 @@ import api from '../../services/api';
 import { Container, Header, Avatar, Name, Bio, List, 
     ReposInfo, RepoName, DetailsButton, DetailsButtonText 
 } from './styles';
-import Home from '../Home';
 
 export default class Main extends Component {
     state = {
@@ -22,6 +21,12 @@ export default class Main extends Component {
 
         this.setState({ repos: response.data });
     }
+
+    handleWebView = (url) => {
+        const { navigation } = this.props;
+        
+        navigation.navigate('Details', { url })
+    } 
 
     render() {
         const { navigation } = this.props;
@@ -44,7 +49,7 @@ export default class Main extends Component {
                         <ReposInfo>
                             <RepoName> {item.name} </RepoName>
     
-                            <DetailsButton onPress={() => {}}>
+                            <DetailsButton onPress={() => this.handleWebView(item)}>
                                 <DetailsButtonText> Ver detalhes </DetailsButtonText>
                             </DetailsButton>
                         </ReposInfo>
