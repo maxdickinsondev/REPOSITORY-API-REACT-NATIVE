@@ -11,7 +11,6 @@
 - React Navigation Stack
 - React Navigation Vector Icons
 - React Native WebView (abre o navegador dentro do aplicativo)
-- Firebase Database (para armazenamento dos dados)
 - Styled Components
 - Axios
 - API do GitHub
