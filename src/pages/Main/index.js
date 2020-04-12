@@ -8,18 +8,24 @@ import { Container, Header, Avatar, Name, Bio, List,
 
 export default class Main extends Component {
     state = {
-        repos: []
+        repos: [],
+        isEnabled: false
     };
 
     async componentDidMount() {
         const { navigation } = this.props;
         const user = navigation.getParam('user');
 
+        const isEnabled = navigation.getParam('isEnabled');
+
         const response = await api.get(`/users/${user.login}/repos`);
 
         console.log(response.data);
 
-        this.setState({ repos: response.data });
+        this.setState({ 
+            repos: response.data,
+            isEnabled: isEnabled 
+        });
     }
 
     handleWebView = (url) => {
@@ -30,12 +36,12 @@ export default class Main extends Component {
 
     render() {
         const { navigation } = this.props;
-        const { repos } = this.state;
+        const { repos, isEnabled } = this.state;
 
         const user = navigation.getParam('user');
 
         return (
-            <Container>
+            <Container isEnabled={isEnabled}>
                 <Header>
                     <Avatar source={{ uri: user.avatar }} />
                     <Name> {user.login} </Name>
@@ -46,10 +52,10 @@ export default class Main extends Component {
                     data={repos}
                     keyExtractor={repo => String(repo.id)}
                     renderItem={({ item }) => (
-                        <ReposInfo>
+                        <ReposInfo isEnabled={isEnabled}>
                             <RepoName> {item.name} </RepoName>
     
-                            <DetailsButton onPress={() => this.handleWebView(item)}>
+                            <DetailsButton onPress={() => this.handleWebView(item)} isEnabled={isEnabled} >
                                 <DetailsButtonText> Ver detalhes </DetailsButtonText>
                             </DetailsButton>
                         </ReposInfo>
