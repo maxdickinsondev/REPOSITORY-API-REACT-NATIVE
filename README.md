@@ -16,5 +16,5 @@
 - API do GitHub
 - Expo
 
-ASSISTIR AO VÍDEO NO YOUTUBE: https://youtu.be/JmZL9oh-nxQ
+ASSISTIR O VÍDEO NO YOUTUBE: https://youtu.be/JmZL9oh-nxQ
 
